@@ -1,0 +1,15 @@
+{
+  "name": "hm9-intro-to-comp-sci",
+  "version": "0.0.1",
+  "description": "Newspaper mockup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.wmi.amu.edu.pl:s452490/cs_homework09.git"
+  },
+  "author": "Jakub Koralewski",
+  "license": "MIT"
+}
