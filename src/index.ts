@@ -5,7 +5,7 @@ let search = {
 	isActive: false,
 	active: (elem: HTMLElement) => {
 		search.isActive = !search.isActive;
-		if(search.isActive) {
+		if (search.isActive) {
 			elem.classList.add("active");
 		} else {
 			search.input.value = "";
@@ -25,7 +25,7 @@ let nav = {
 	activeListItem: null as HTMLLIElement,
 	active: () => {
 		nav.isActive = !nav.isActive;
-		if(nav.isActive) {
+		if (nav.isActive) {
 			[nav.nav, nav.clickCatcher]
 				.forEach(
 					(x) => x.classList.remove("active"));
@@ -53,7 +53,16 @@ let nav = {
 		nav.activeListItem.classList.add("active");
 	},
 	listItemClick: (e: Event) => {
-		nav.setActiveListItem(e.target as HTMLLIElement);
+		const target = e.target as HTMLLIElement;
+		switch (target.id) {
+			case "xd":
+				alert("bap");
+				break;
+			case "?":
+				alert("me");
+				break;
+		}
+		nav.setActiveListItem(target);
 	}
 };
 nav.listItems = nav.nav.querySelectorAll("ul > li");
@@ -73,10 +82,10 @@ let header = {
 	makeHeaderAnimatable: () => {
 		const text = header.h1.innerText.trim();
 		header.h1.innerHTML = "";
-		for(const letter of text) {
+		for (const letter of text) {
 			const span = document.createElement("span");
 			span.innerText = letter;
-			if(letter === " ") {
+			if (letter === " ") {
 				span.classList.add("empty");
 			}
 			header.h1.appendChild(span);
