@@ -100,3 +100,55 @@ let header = {
 };
 header.makeHeaderAnimatable();
 header.setDate();
+
+let s = {
+	slideshow: document.querySelector("section#slideshow"),
+	innerSlideshow: null as HTMLDivElement,
+	position: 0,
+	num: 0,
+	figures: null as NodeListOf<HTMLElement>
+};
+
+let slideshow = {
+	...s,
+	figures: s.slideshow.querySelectorAll("figure"),
+	innerSlideshow: s.slideshow.querySelector("#inner-slideshow") as HTMLDivElement,
+	innerSlideshowTransform: "",
+	controls: {
+		left: s.slideshow.querySelector("#left") as HTMLDivElement,
+		setPosition: () => {
+			const pos = slideshow.position;
+			console.log(`position: `, pos);
+			if(pos === 0) {
+				slideshow.controls.left.classList.add("inactive");
+			} else {
+				slideshow.controls.left.classList.remove("inactive");
+			}
+			if(pos === slideshow.num - 1) {
+				slideshow.controls.right.classList.add("inactive");
+			} else {
+				slideshow.controls.right.classList.remove("inactive");
+			}
+			slideshow.innerSlideshow.style.transform
+				= `translateX(-${pos * 100 + 50}%)`;
+		},
+		onLeftClick: () => {
+			console.log("left");
+			slideshow.position = Math.max(0, --slideshow.position);
+			slideshow.controls.setPosition();
+		},
+		right: s.slideshow.querySelector("#right") as HTMLDivElement,
+		onRightClick: () => {
+			console.log("right");
+			slideshow.position = Math.min(slideshow.num - 1, ++slideshow.position);
+			slideshow.controls.setPosition();
+		},
+	}
+};
+slideshow.num = slideshow.figures.length;
+slideshow.controls.setPosition();
+
+["left", "right"].forEach(side => {
+	const x = slideshow.controls[side] as HTMLDivElement;
+	x.addEventListener("click", slideshow.controls[`on${side[0].toUpperCase()}${side.slice(1)}Click`]);
+});

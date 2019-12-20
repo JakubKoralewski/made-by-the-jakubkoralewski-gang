@@ -1,9 +1,10 @@
+@import './styles/_vars.scss';
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
-$secondary: green;
 
 body {
 	font-family: 'Lato', sans-serif;
@@ -32,4 +33,5 @@ body {
 
 @import './styles/nav.scss';
 @import './styles/header.scss';
+@import './styles/main.scss';
 
