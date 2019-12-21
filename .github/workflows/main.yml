@@ -12,7 +12,7 @@ jobs:
     - name: Install
       run: npm install
     - name: Build
-      run: parcel build src/index.html --public-url /
+      run: parcel build src/index.html --public-url ./
     - name: GH Pages deploy
       uses: Cecilapp/GitHub-Pages-deploy@2.0.0
       env:
