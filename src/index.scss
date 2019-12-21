@@ -31,7 +31,7 @@ body {
 	}
 }
 
-@import './styles/nav.scss';
-@import './styles/header.scss';
-@import './styles/main.scss';
-
+@import './styles/nav';
+@import './styles/header';
+@import './styles/main/main';
+@import './styles/footer';

@@ -28,11 +28,11 @@ let nav = {
 		if (nav.isActive) {
 			[nav.nav, nav.clickCatcher]
 				.forEach(
-					(x) => x.classList.remove("active"));
+					(x) => x.classList.add("active"));
 		} else {
 			[nav.nav, nav.clickCatcher]
 				.forEach(
-					(x) => x.classList.add("active"));
+					(x) => x.classList.remove("active"));
 		}
 	},
 	onClickCatcherClick: (e: Event) => {
